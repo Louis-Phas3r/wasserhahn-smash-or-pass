@@ -20,25 +20,26 @@ choices = []
 
 # Streamlit app layout
 st.title("Smash or Pass")
-st.image(images[current_image_index])
 
-# Button functionalities
-if st.button("Smash"):
-    smashes += 1
-    choices.append('Smash')
-    current_image_index += 1
+# Button functionalities inside a loop
+while current_image_index < len(images):
+    st.image(images[current_image_index])
+    
+    if st.button("Smash"):
+        smashes += 1
+        choices.append('Smash')
+        current_image_index += 1
 
-if st.button("Pass"):
-    passes += 1
-    choices.append('Pass')
-    current_image_index += 1
+    if st.button("Pass"):
+        passes += 1
+        choices.append('Pass')
+        current_image_index += 1
 
-# Show results if all images are viewed
-if current_image_index == len(images):
-    st.header("Results:")
-    st.write(f"Smashes: {smashes}")
-    st.write(f"Passes: {passes}")
-    st.subheader("Overview:")
-    for i in range(len(images)):
-        st.image(images[i])
-        st.write(choices[i])
+# Show results
+st.header("Results:")
+st.write(f"Smashes: {smashes}")
+st.write(f"Passes: {passes}")
+st.subheader("Overview:")
+for i in range(len(images)):
+    st.image(images[i])
+    st.write(choices[i])

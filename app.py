@@ -25,12 +25,12 @@ st.title("Smash or Pass")
 while current_image_index < len(images):
     st.image(images[current_image_index])
     
-    if st.button("Smash"):
+    if st.button(f"Smash {current_image_index}", key=f"smash_{current_image_index}"):
         smashes += 1
         choices.append('Smash')
         current_image_index += 1
 
-    if st.button("Pass"):
+    if st.button(f"Pass {current_image_index}", key=f"pass_{current_image_index}"):
         passes += 1
         choices.append('Pass')
         current_image_index += 1
